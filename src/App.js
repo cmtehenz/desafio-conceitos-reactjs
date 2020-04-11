@@ -13,7 +13,15 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const res = await api.post('repositories', {
+      title: `Aplicativo Node ${Date.now()} `,
+      url:   "https://github.com/cmtehenz/desafio-conceitos-node",
+      techs: ["Node.js", "express"]
+    });
+
+    const repositorie = res.data;
+    setRepositories([...repositories, repositorie]);
+
   }
 
   async function handleRemoveRepository(id) {
